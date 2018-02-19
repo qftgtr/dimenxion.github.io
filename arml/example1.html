@@ -1,0 +1,31 @@
+<style>
+  #model1 { z: 5; scale: 1.5; euler-y: 180; }
+  #model2 { x: 3; z: 5; euler-y: 180; }
+  #model3 { y: 2; scale: 0.5; }
+</style>
+
+<body>
+  <model id="model1" src="models/micromonsters/micro_knight:micro_knight" onclick="onClickModel1"></model>
+  <model id="model2" src="models/micromonsters/micro_knight:micro_knight" onclick="onClickModel2">
+    <model id="model3" src="models/micromonsters/micro_demon:micro_demon" onclick="onClickModel3"></model>
+  </model>
+</body>
+
+<script>
+  function onClickModel1() {
+    var model1 = $('#model1');
+    model1.animate({ z: 4, scale: 2 }, 500);
+    model1.trigger('animate', 'Attack');
+    setTimeout(function() {
+      model1.animate({ z: 5, scale: 1.5 }, 1000);
+    }, 2000);
+  }
+
+  function onClickModel2() {
+    $('#model2').trigger('animate', 'GetHitFront');
+  }
+
+  function onClickModel3() {
+    $('#model3').trigger('animate', 'GetHit');
+  }
+</script>
